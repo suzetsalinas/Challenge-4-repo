@@ -1,1 +1,2 @@
 # Challenge-4-repo
+This is my assignment for Challenge 4 in which I create a timed quiz program that quizzes me on JavaScript fundamentals. It has a set time for the user to take the quiz, but decreases the time after incorrect answers. When either the time runs out or the user answers all questions, the user's initials and score will be saved and displayed.
