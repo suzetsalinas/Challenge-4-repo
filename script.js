@@ -11,7 +11,7 @@
 
 
 
-
+// data used for each question's card
 const quizData = [
     {
       question: 'Commonly used data types DO NOT include: ',
@@ -35,29 +35,25 @@ const quizData = [
     },
     {
       question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-      options: [
-        'JavaScript',
-        'terminal/bash',
-        'for loops',
-        'console.log',
-      ],
+      options: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
       answer: 'console.log',
     }
     
   ];
 
   const quizContainer = document.getElementById('quiz');
-  const resultContainer = document.getElementById('result');
+  const resultContainer = document.getElementById('results');
   const submitButton = document.getElementById('submit');
   // retry will be used to loop back quiz and start over
-  const retryButton = document.getElementById('retry');
+  const retestButton = document.getElementById('retest');
   // showAnswer can be used to store score?
-  const showAnswerButton = document.getElementById('showAnswer');
+  const showScoresButton = document.getElementById('showScore');
 
   let currentQuestion = 0;
   let score = 0;
+  // TODO: GET RID OF THIS ARRAY
   let incorrectAnswers = [];
-// not sure if i need this shuffled array; used to shuffle answer choices each time the quiz runs
+// TODO: GET RID OF SHUFFLEARRAY FX
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -65,6 +61,9 @@ const quizData = [
     }
   }
   
+// TODO ADD FX TO SHOW STARTING CARD/PAGE BEFORE BEGGINNING QUIZ, FIX displayQuestion call 
+// at end of program to start with this new fx, ensure it cascades thru all other fx's
+
   function displayQuestion() {
     const questionData = quizData[currentQuestion];
   
@@ -121,12 +120,12 @@ const quizData = [
       }
     }
   }
-  
+
   function displayResult() {
     quizContainer.style.display = 'none';
     submitButton.style.display = 'none';
-    retryButton.style.display = 'inline-block';
-    showAnswerButton.style.display = 'inline-block';
+    retestButton.style.display = 'inline-block';
+    showScoresButton.style.display = 'inline-block';
     resultContainer.innerHTML = `You scored ${score} out of ${quizData.length}!`;
   }
   
@@ -136,17 +135,17 @@ const quizData = [
     incorrectAnswers = [];
     quizContainer.style.display = 'block';
     submitButton.style.display = 'inline-block';
-    retryButton.style.display = 'none';
-    showAnswerButton.style.display = 'none';
+    retestButton.style.display = 'none';
+    showScoresButton.style.display = 'none';
     resultContainer.innerHTML = '';
     displayQuestion();
   }
   
-  function showAnswer() {
+  function showScores() {
     quizContainer.style.display = 'none';
     submitButton.style.display = 'none';
-    retryButton.style.display = 'inline-block';
-    showAnswerButton.style.display = 'none';
+    retestButton.style.display = 'inline-block';
+    showScoresButton.style.display = 'none';
   
     let incorrectAnswersHtml = '';
     for (let i = 0; i < incorrectAnswers.length; i++) {
@@ -169,8 +168,9 @@ const quizData = [
 
 
 submitButton.addEventListener('click', checkAnswer);
-retryButton.addEventListener('click', retryQuiz);
-// showAnswerButton can be used to show saved scores ??
-showAnswerButton.addEventListener('click', showAnswer);
+retestButton.addEventListener('click', retryQuiz);
+// showScoreButton can be used to show saved scores
+// TODO: FIGURE OUT HOW TO SAVE SCORES
+showScoresButton.addEventListener('click', showScores);
 
 displayQuestion();

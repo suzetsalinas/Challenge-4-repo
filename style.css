@@ -4,6 +4,7 @@ body {
 .h1 {
     /* position: relative; */
     text-align: center;
+    margin-top: 40px;
 }
 
 .card {
@@ -13,16 +14,13 @@ body {
     margin-left: 15%;
     margin-top: 20%;
 }
-  /* the following code was from a card template
-  /* On mouse-over, add a deeper shadow 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  } */
   
   /* Add some padding inside the card container */
 .container {
     padding: 2px 16px;
 }
+
+
 .question {
     font-weight: bold;
     margin-bottom: 10px;
@@ -50,7 +48,7 @@ body {
 .button:hover {
     background-color: #6d357a;
 }
-.result {
+.results {
     text-align: center;
     margin-top: 20px;
     font-weight: bold;
